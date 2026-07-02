@@ -5,6 +5,7 @@ let tabBtn=[];
 let tabReponse=[];
 let idChrono;
 let idTimeNext;
+let maxQuestion = 0;
 /*Récupération des boutons*/
 const btnStart = document.getElementById("start-btn");
 const btnNext = document.getElementById("next-btn");
@@ -214,6 +215,7 @@ const clickResponse= function(e)
 }
 const afficherBoutons = function(options)
 {
+    if(vie==0 || parseInt(txtCounter.innerText)+1 > maxQuestion) {winOrLoose();return;}
     tabBtn = [];  
     for (const key in options) {
         if (!Object.hasOwn(options, key)) continue;
@@ -240,6 +242,7 @@ const afficherBoutons = function(options)
 }
 const afficherQuestion= function(index)
 {
+    if(vie==0 || parseInt(txtCounter.innerText)+1 > maxQuestion) {winOrLoose();return;}
     zonequestion.innerHTML="";
     zonereponse.innerHTML="";
     let question =questions[index];
@@ -277,11 +280,12 @@ const afficherQuestion= function(index)
 /*Démarrage*/
 const start = function(e)
 {
+    maxQuestion = questions.length;
     if(e.currentTarget=== btnReplay)
     {
         zonrFin.classList.add('is-hidden');
         vie=3;
-        txtCounter.innerText='1/8';
+        txtCounter.innerText=`0/${maxQuestion}`;
     }
     tabReponse=[];
     txtScoreFinal.innerText=0;
@@ -317,6 +321,7 @@ function addBtnKeyListener()
 function nextQuestion()
 {
     clearTimeout(idTimeNext);
+    if(vie==0 || parseInt(txtCounter.innerText)+1 > maxQuestion) {winOrLoose();return;}
     afficherQuestion(currentIndex);
     btnNext.classList.add('is-hidden');
     let currentQuestion = parseInt(txtCounter.innerText)+1;
