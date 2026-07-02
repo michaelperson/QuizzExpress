@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Express</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome (icônes) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css"> 
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <main class="app">
+
+    <!-- ============================================================
+                            ÉCRAN 1 — ACCUEIL 
+      ============================================================ -->
+    <section class="screen screen--accueil" id="screen-accueil">
+      <h1 class="title">Quiz&nbsp;Express <i class="fa-solid fa-bolt title__bolt"></i></h1>
+      <p class="subtitle">8 questions. Un chrono qui tourne. Pas le droit à l'hésitation.</p>
+
+      <ul class="rules">
+        <li><i class="fa-solid fa-bullseye"></i> 4 réponses par question — clic <em>ou</em> clavier (A / B / C / D)</li>
+        <li><i class="fa-solid fa-stopwatch"></i> Réponds vite : le temps restant rapporte des points bonus</li>
+        <li><i class="fa-solid fa-fire"></i> Enchaîne les bonnes réponses pour faire grimper ta série</li>
+        <li><i class="fa-solid fa-heart"></i> 3 vies — une erreur ou un temps écoulé en coûte une</li>
+      </ul>
+
+      <button type="button" class="btn btn--primary" id="start-btn">
+        <i class="fa-solid fa-play"></i> Démarrer
+      </button>
+    </section>
+
+
+    <!-- ============================================================
+                                ÉCRAN 2 — JEU 
+      ============================================================ -->
+    <section class="screen screen--game is-hidden" id="screen-game">
+
+      <!-- Tableau de bord (HUD) : le JS met à jour les valeurs -->
+      <header class="hud">
+        <div class="hud__item">
+          <span class="hud__label"><i class="fa-solid fa-star"></i> Score</span>
+          <span class="hud__value" id="score">0</span>
+        </div>
+        <div class="hud__item">
+          <span class="hud__label"><i class="fa-solid fa-fire"></i> Série</span>
+          <span class="hud__value" id="streak">0</span>
+        </div>
+        <div class="hud__item hud__item--lives">
+          <span class="hud__label"><i class="fa-solid fa-heart"></i> Vies</span> 
+          <span class="hud__value" id="lives">
+            <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i>
+          </span>
+        </div>
+        <div class="hud__item hud__item--counter">
+          <span class="hud__label"><i class="fa-solid fa-list-ol"></i> Question</span>
+          <span class="hud__value" id="question-counter">1 / 8</span>
+        </div>
+      </header>
+
+      <!-- Barre de chrono : le JS pilote la largeur de #timer-bar (de 100% à 0%) -->
+      <div class="timer">
+        <div class="timer__bar" id="timer-bar"></div>
+      </div>
+      <span class="timer__text" id="timer-text"><i class="fa-solid fa-stopwatch"></i> 10</span>
+
+      <!-- Énoncé : le JS y écrit le texte de la question courante -->
+      <h2 class="question" id="question-text">L'énoncé de la question s'affiche ici…</h2>
+
+      <!-- Réponses : VIDE. Le JS génère ici les 4 boutons (for…in sur l'objet options). -->
+      <div class="answers" id="answers">
+      </div>
+
+      <!-- Bouton « Suivant » : le JS l'affiche après une réponse -->
+      <div class="game__controls">
+        <button type="button" class="btn btn--ghost is-hidden" id="next-btn">
+          Suivant <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+    </section>
+
+
+    <!-- ============================================================
+          ÉCRAN 3 — FIN DE PARTIE 
+        ============================================================ -->
+    <section class="screen screen--fin is-hidden" id="screen-fin">
+      <h2 class="fin__title"><i class="fa-solid fa-flag-checkered"></i> Partie terminée !</h2>
+
+      <div class="fin__scorebox">
+        <span class="fin__scorelabel">Score final</span>
+        <span class="fin__score" id="final-score">0</span>
+      </div>
+
+      <!-- Récapitulatif : VIDE. Le JS le remplit (for…of sur le tableau des résultats). -->
+      <h3 class="fin__recap-title">Ton parcours</h3>
+      <ul class="recap" id="recap">
+        
+      </ul>
+
+      <button type="button" class="btn btn--primary" id="replay-btn">
+        <i class="fa-solid fa-rotate-right"></i> Rejouer
+      </button>
+    </section>
+
+  </main>
+
+</body>
+</html>

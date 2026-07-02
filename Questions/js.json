@@ -1,0 +1,42 @@
+[
+{
+    "enonce": "Quel langage s'exécute nativement dans le navigateur ?",
+    "options": { "A": "Python", "B": "JavaScript", "C": "C#", "D": "Java" },
+    "correct": "B"
+},
+{
+    "enonce": "Que renvoie typeof [] en JavaScript ?",
+    "options": { "A": "'array'", "B": "'list'", "C": "'object'", "D": "'undefined'" },
+    "correct": "C"
+},
+{
+    "enonce": "Quelle méthode AJOUTE un élément à la fin d'un tableau ?",
+    "options": { "A": "push()", "B": "pop()", "C": "shift()", "D": "slice()" },
+    "correct": "A"
+},
+{
+    "enonce": "Quel symbole introduit une fonction fléchée ?",
+    "options": { "A": "->", "B": "=>", "C": "::", "D": "~>" },
+    "correct": "B"
+},
+{
+    "enonce": "Quelle boucle est faite pour parcourir les CLÉS d'un objet ?",
+    "options": { "A": "for...of", "B": "forEach", "C": "for...in", "D": "while" },
+    "correct": "C"
+},
+{
+    "enonce": "Quelle fonction arrête un setInterval ?",
+    "options": { "A": "stopInterval()", "B": "clearTimeout()", "C": "clearInterval()", "D": "killTimer()" },
+    "correct": "C"
+},
+{
+    "enonce": "event.target désigne…",
+    "options": { "A": "la fenêtre", "B": "l'élément qui a déclenché l'événement", "C": "le document", "D": "le parent direct" },
+    "correct": "B"
+},
+{
+    "enonce": "Pour retirer un écouteur, removeEventListener exige…",
+    "options": { "A": "le même nom d'événement seulement", "B": "n'importe quelle fonction", "C": "la MÊME référence de fonction", "D": "rien de spécial" },
+    "correct": "C"
+}
+]

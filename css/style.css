@@ -1,0 +1,356 @@
+/* =====================================================================
+   QUIZ EXPRESS — Feuille de style (squelette fourni)
+   Parti pris : épuré. Fond neutre, une seule teinte verte en accent,
+   aplats, fines bordures, pas de dégradés ni de halos.
+   Toutes les classes d'état pilotées par le JS sont déjà prévues
+   (.is-hidden, .answer-btn--correct, .answer-btn--wrong, .answer-btn--locked).
+   ===================================================================== */
+
+/* ---------- 1. Variables ---------- */
+:root {
+  --bg:          #f4f5f4;   /* page, gris très clair */
+  --card:        #ffffff;
+  --border:      #e4e7e4;   /* fines séparations */
+  --ink:         #1b1d1b;   /* texte principal */
+  --ink-soft:    #6b726b;   /* texte secondaire */
+
+  --accent:      #1f8a4c;   /* vert unique */
+  --accent-dk:   #166b3a;
+  --accent-soft: #edf7f0;   /* fond teinté léger */
+
+  --wrong:       #b23b3b;   /* rouge sobre, réservé aux erreurs */
+  --wrong-soft:  #fbeeee;
+
+  --timeup:      #FFD580;
+  --timeup-soft: #FFDBBB;
+  --timeup-text: #c3912f;
+
+  --radius:      4px;
+}
+
+/* ---------- 2. Base ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  font-family: "Nunito", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 56px 20px;
+  line-height: 1.5;
+}
+
+.app { width: min(560px, 100%); }
+
+/* ---------- 3. Écrans ---------- */
+.is-hidden { display: none !important; }
+
+.screen {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+}
+
+/* ---------- 4. Accueil ---------- */
+.title {
+  font-family: "Fredoka", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+.title__bolt { color: var(--accent); font-size: .85em; }
+
+.subtitle {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  margin: 6px 0 28px;
+}
+
+.rules {
+  list-style: none;
+  margin-bottom: 32px;
+}
+.rules li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+  font-size: .96rem;
+  color: var(--ink);
+}
+.rules li:last-child { border-bottom: 1px solid var(--border); }
+.rules li i { color: var(--accent); width: 16px; text-align: center; }
+.rules em { font-style: normal; font-weight: 700; }
+
+/* ---------- 5. Boutons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.btn--primary {
+  width: 100%;
+  color: #fff;
+  background: var(--accent);
+}
+.btn--primary:hover { background: var(--accent-dk); }
+
+.btn--ghost {
+  color: var(--ink);
+  background: transparent;
+  border-color: var(--border);
+}
+.btn--ghost:hover { border-color: var(--accent); color: var(--accent-dk); }
+
+/* ---------- 6. HUD (tableau de bord) ---------- */
+.hud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--border);
+}
+.hud__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.hud__item--counter { margin-left: auto; text-align: right; }
+.hud__label {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+.hud__label i { color: var(--ink-soft); margin-right: 4px; }
+.hud__value {
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.hud__item--lives .hud__value i { color: var(--accent); margin-right: 2px; }
+
+/* ---------- 7. Chrono ---------- */
+.timer {
+  position: relative;
+  height: 6px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.timer__bar {
+  height: 100%;
+  width: 100%;                 /* le JS pilote cette largeur (100% → 0%) */
+  background: var(--accent);
+  transition: width 1s linear;
+}
+.timer__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 22px;
+  
+}
+
+/* ---------- 8. Énoncé ---------- */
+.question {
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.35;
+  margin-bottom: 24px;
+  min-height: 2.6em;
+}
+
+/* ---------- 9. Réponses (générées par le JS) ---------- */
+.answers {
+  display: grid;
+  gap: 10px;
+}
+
+.answer-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 15px 16px;
+  text-align: left;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color .15s ease, background-color .15s ease;
+}
+.answer-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.answer-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Pastille de la lettre A / B / C / D */
+.answer-btn__key {
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: "Fredoka", sans-serif;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.answer-btn__text { flex: 1; }
+
+/* --- États posés par le JS après une réponse --- */
+.answer-btn--correct {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-dk);
+}
+.answer-btn--correct .answer-btn__key { border-color: var(--accent); color: var(--accent); }
+.answer-btn--correct::after {
+  content: "\f00c";                 /* fa-check */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-left: auto;
+  color: var(--accent);
+}
+.answer-btn--wrong {
+  border-color: var(--wrong);
+  background: var(--wrong-soft);
+  color: var(--wrong);
+}
+.answer-btn--wrong .answer-btn__key { border-color: var(--wrong); color: var(--wrong); }
+.answer-btn--wrong::after {
+  content: "\f00d";                 /* fa-xmark */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-left: auto;
+  color: var(--wrong);
+}
+
+.answer-btn--timeup {
+  border-color: var(--timeup);
+  background: var(--timeup-soft);
+  color: var(--timeup-text);
+}
+.answer-btn--timeup .answer-btn__key { border-color: var(--timeup); color: var(--timeup-text); }
+.answer-btn--timeup::after {
+  content: "\f254";                 /* fa-hourglass */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-left: auto;
+  color: var(--timeup-text);
+}
+
+.answer-btn--locked { cursor: default; }
+.answer-btn--locked:hover { border-color: var(--border); background: var(--card); }
+.answer-btn--locked.answer-btn--correct:hover { border-color: var(--accent); background: var(--accent-soft); }
+.answer-btn--locked.answer-btn--wrong:hover { border-color: var(--wrong); background: var(--wrong-soft); }
+
+/* ---------- 10. Contrôles de jeu ---------- */
+.game__controls {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  min-height: 44px;
+}
+
+/* ---------- 11. Écran de fin ---------- */
+.fin__title {
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.fin__title i { color: var(--accent); }
+.fin__scorebox {
+  margin: 24px 0;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.fin__scorelabel {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+.fin__score {
+  font-family: "Fredoka", sans-serif;
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.fin__recap-title {
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+
+/* Récapitulatif (généré par le JS) */
+.recap {
+  list-style: none;
+  margin-bottom: 28px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.recap__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-top: 1px solid var(--border);
+  font-size: .94rem;
+}
+.recap__item:last-child { border-bottom: 1px solid var(--border); }
+.recap__item--ok .recap__icon { color: var(--accent); }
+.recap__item--ko .recap__icon { color: var(--wrong); }
+.recap__icon { flex: 0 0 auto; width: 16px; text-align: center; }
+.recap__q { flex: 1; }
+
+/* ---------- 12. Responsive ---------- */
+@media (max-width: 460px) {
+  body { padding: 28px 16px; }
+  .screen { padding: 28px 22px; }
+  .hud { gap: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
