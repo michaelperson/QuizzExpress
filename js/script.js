@@ -250,7 +250,7 @@ const start = function(e)
     {
         questions =data;
         maxQuestion= questions.length;
-        txtCounter.innerText=`0/${maxQuestion}`;
+        txtCounter.innerText=`1/${maxQuestion}`;
         if(e.currentTarget=== btnReplay)
         {
             zonrFin.classList.add('is-hidden');
