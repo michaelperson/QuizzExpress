@@ -1,0 +1,102 @@
+[
+    {
+        "enonce": "Que signifie l'acronyme HTML ?",
+        "options": {
+            "A": "HyperText Markup Language",
+            "B": "HighText Machine Language",
+            "C": "HyperLink Technology Management Language",
+            "D": "Home Tool Markup Language"
+        },
+        "correct": "A"
+    },
+    {
+        "enonce": "Quelle balise HTML est utilisée pour insérer un saut de ligne ?",
+        "options": {
+            "A": "<break>",
+            "B": "<lb>",
+            "C": "<br>",
+            "D": "<newline>"
+        },
+        "correct": "C"
+    },
+    {
+        "enonce": "Quel attribut permet d'ouvrir un lien dans un nouvel onglet ou une nouvelle fenêtre ?",
+        "options": {
+            "A": "window=\"blank\"",
+            "B": "target=\"_blank\"",
+            "C": "href=\"new\"",
+            "D": "rel=\"external\""
+        },
+        "correct": "B"
+    },
+    {
+        "enonce": "Quelle balise sémantique HTML5 représente le contenu principal et unique d'un document ?",
+        "options": {
+            "A": "<main>",
+            "B": "<content>",
+            "C": "<section>",
+            "D": "<body>"
+        },
+        "correct": "A"
+    },
+    {
+        "enonce": "Quel attribut est indispensable pour fournir une description textuelle alternative à une balise <img> ?",
+        "options": {
+            "A": "title",
+            "B": "description",
+            "C": "src",
+            "D": "alt"
+        },
+        "correct": "D"
+    },
+    {
+        "enonce": "Quelle balise HTML est utilisée pour définir une liste ordonnée (numérotée) ?",
+        "options": {
+            "A": "<ul>",
+            "B": "<ol>",
+            "C": "<li>",
+            "D": "<list>"
+        },
+        "correct": "B"
+    },
+    {
+        "enonce": "Dans quelle section d'un document HTML place-t-on habituellement les balises <meta> ?",
+        "options": {
+            "A": "<body>",
+            "B": "<footer>",
+            "C": "<head>",
+            "D": "<header>"
+        },
+        "correct": "C"
+    },
+    {
+        "enonce": "Quel attribut permet de lier explicitement une balise <label> à un élément <input> ?",
+        "options": {
+            "A": "for",
+            "B": "id",
+            "C": "name",
+            "D": "bind"
+        },
+        "correct": "A"
+    },
+    {
+        "enonce": "Quelle balise standard de HTML5 permet d'intégrer nativement un fichier vidéo ?",
+        "options": {
+            "A": "<media>",
+            "B": "<video>",
+            "C": "<embed>",
+            "D": "<object>"
+        },
+        "correct": "B"
+    },
+    {
+        "enonce": "Quel élément HTML est utilisé pour afficher du code informatique avec une police à chasse fixe ?",
+        "options": {
+            "A": "<kbd>",
+            "B": "<samp>",
+            "C": "<code>",
+            "D": "<pre>"
+        },
+        "correct": "C"
+    }
+]

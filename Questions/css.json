@@ -1,0 +1,102 @@
+[
+    {
+        "enonce": "Que signifie l'acronyme CSS ?",
+        "options": {
+            "A": "Cascading Style Sheets",
+            "B": "Creative Style Systems",
+            "C": "Computer Style Sheets",
+            "D": "Complex Style Syntax"
+        },
+        "correct": "A"
+    },
+    {
+        "enonce": "Quelle propriété CSS est utilisée pour modifier la couleur d'arrière-plan d'un élément ?",
+        "options": {
+            "A": "color",
+            "B": "bg-color",
+            "C": "background-color",
+            "D": "surface-color"
+        },
+        "correct": "C"
+    },
+    {
+        "enonce": "Parmi ces sélecteurs CSS, lequel possède la spécificité (priorité) la plus élevée ?",
+        "options": {
+            "A": ".ma-classe",
+            "B": "#mon-id",
+            "C": "div",
+            "D": "div .ma-classe"
+        },
+        "correct": "B"
+    },
+    {
+        "enonce": "Dans le modèle de boîte (Box Model) CSS, quel espace se situe directement entre le contenu et la bordure ?",
+        "options": {
+            "A": "padding",
+            "B": "margin",
+            "C": "outline",
+            "D": "border-width"
+        },
+        "correct": "A"
+    },
+    {
+        "enonce": "Quelle valeur de la propriété 'position' permet de fixer un élément par rapport à la fenêtre du navigateur, même lors du défilement ?",
+        "options": {
+            "A": "relative",
+            "B": "absolute",
+            "C": "static",
+            "D": "fixed"
+        },
+        "correct": "D"
+    },
+    {
+        "enonce": "Dans un conteneur Flexbox, quelle propriété permet d'aligner les éléments le long de l'axe principal ?",
+        "options": {
+            "A": "align-items",
+            "B": "align-content",
+            "C": "justify-content",
+            "D": "flex-direction"
+        },
+        "correct": "C"
+    },
+    {
+        "enonce": "Quelle pseudo-classe CSS est utilisée pour appliquer un style à un élément uniquement lorsque la souris le survole ?",
+        "options": {
+            "A": ":active",
+            "B": ":hover",
+            "C": ":focus",
+            "D": ":visited"
+        },
+        "correct": "B"
+    },
+    {
+        "enonce": "Quelle propriété CSS permet de modifier l'espacement vertical entre les lignes d'un texte ?",
+        "options": {
+            "A": "line-height",
+            "B": "letter-spacing",
+            "C": "text-indent",
+            "D": "word-spacing"
+        },
+        "correct": "A"
+    },
+    {
+        "enonce": "Quelle unité de mesure CSS est relative à la taille de police de l'élément racine (<html>) ?",
+        "options": {
+            "A": "em",
+            "B": "px",
+            "C": "rem",
+            "D": "vh"
+        },
+        "correct": "C"
+    },
+    {
+        "enonce": "Quelle directive CSS permet d'appliquer des blocs de styles de manière conditionnelle en fonction des caractéristiques de l'écran ?",
+        "options": {
+            "A": "@import",
+            "B": "@media",
+            "C": "@supports",
+            "D": "@keyframes"
+        },
+        "correct": "B"
+    }
+]

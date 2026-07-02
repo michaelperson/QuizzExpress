@@ -87,6 +87,53 @@ body {
 .rules li i { color: var(--accent); width: 16px; text-align: center; }
 .rules em { font-style: normal; font-weight: 700; }
 
+/* ---------- 4b. Liste déroulante (choix du thème) ---------- */
+/* Le libellé "Thème" sur l'écran d'accueil */
+#screen-accueil > h2 {
+  font-family: "Fredoka", sans-serif;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+
+.theme {
+  /* on retire le rendu natif du navigateur pour styler nous-mêmes */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  width: 100%;
+  margin-bottom: 24px;
+  padding: 12px 42px 12px 14px;   /* place à droite pour le chevron */
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+
+  /* chevron custom (SVG en teinte accent), calé à droite */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231f8a4c' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 14px;
+
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.theme:hover { border-color: var(--accent); }
+.theme:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+/* le menu déroulé lui-même est rendu par l'OS ; on cadre juste le texte */
+.theme option { color: var(--ink); background: var(--card); }
+
 /* ---------- 5. Boutons ---------- */
 .btn {
   display: inline-flex;

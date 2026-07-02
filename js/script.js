@@ -5,6 +5,10 @@ let tabBtn=[];
 let tabReponse=[];
 let idChrono;
 let idTimeNext;
+let choixQuestion="js.json";
+/*Récupération des select*/
+const selTheme = document.getElementById('theme');
+const selThemereplay = document.getElementById('theme_replay');
 /*Récupération des boutons*/
 const btnStart = document.getElementById("start-btn");
 const btnNext = document.getElementById("next-btn");
@@ -28,49 +32,9 @@ const zonrTimer = document.getElementById("timer-bar");
 const zoneRecap = document.getElementById("recap");
 /*************************** */
 /*Les questions*/
-const questions = [
-{
-enonce: "Quel langage s'exécute nativement dans le navigateur ?",
-options: { A: "Python", B: "JavaScript", C: "C#", D: "Java" },
-correct: "B"
-},
-{
-enonce: "Que renvoie typeof [] en JavaScript ?",
-options: { A: "'array'", B: "'list'", C: "'object'", D: "'undefined'" },
-correct: "C"
-},
-{
-enonce: "Quelle méthode AJOUTE un élément à la fin d'un tableau ?",
-options: { A: "push()", B: "pop()", C: "shift()", D: "slice()" },
-correct: "A"
-},
-{
-enonce: "Quel symbole introduit une fonction fléchée ?",
-options: { A: "->", B: "=>", C: "::", D: "~>" },
-correct: "B"
-},
-{
-enonce: "Quelle boucle est faite pour parcourir les CLÉS d'un objet ?",
-options: { A: "for...of", B: "forEach", C: "for...in", D: "while" },
-correct: "C"
-},
-{
-enonce: "Quelle fonction arrête un setInterval ?",
-options: { A: "stopInterval()", B: "clearTimeout()", C: "clearInterval()", D: "killTimer()" },
-correct: "C"
-},
-{
-enonce: "event.target désigne…",
-options: { A: "la fenêtre", B: "l'élément qui a déclenché l'événement", C: "le document", D: "le parent direct" },
-correct: "B"
-},
-{
-enonce: "Pour retirer un écouteur, removeEventListener exige…",
-options: { A: "le même nom d'événement seulement", B: "n'importe quelle fonction", C: "la MÊME référence de fonction", D: "rien de spécial" },
-correct: "C"
-}
-];
 
+//version à partir du fichier (voir fonction start)
+let questions = [];
 /*Gestion du chrono*/
 
 
@@ -93,9 +57,10 @@ const demarrerChrono = function(duree, onTick, onFin)
 
 /************************************************ */
 /*Fonctions*/
+
 const afficherRecap= function()
-{     zoneRecap.replaceChildren(); //équivalent de zoneRecap.innerHtml="";
-    console.table(tabReponse);
+{   
+    zoneRecap.replaceChildren(); //équivalent de zoneRecap.innerHtml="";
     for (const [i, element] of questions.entries()) 
     {
         let li = document.createElement("li");
@@ -277,21 +242,31 @@ const afficherQuestion= function(index)
 /*Démarrage*/
 const start = function(e)
 {
-    if(e.currentTarget=== btnReplay)
+    //chargement des questions
+    fetch(`./Questions/${choixQuestion}`)
+    .then(response => response.json())
+    .then(data => 
     {
-        zonrFin.classList.add('is-hidden');
-        vie=3;
-        txtCounter.innerText='1/8';
-    }
-    tabReponse=[];
-    txtScoreFinal.innerText=0;
-    txtScore.innerText=0;
+        questions =data;
+        if(e.currentTarget=== btnReplay)
+        {
+            zonrFin.classList.add('is-hidden');
+            vie=3;
+            txtCounter.innerText='1/8';
+        }
+        tabReponse=[];
+        txtScoreFinal.innerText=0;
+        txtScore.innerText=0;
 
-    currentIndex=0;
-    zonrAcceuil.classList.add("is-hidden");
-    zoneGame.classList.remove("is-hidden");
-    afficherVie(3);
-    afficherQuestion(currentIndex);
+        currentIndex=0;
+        zonrAcceuil.classList.add("is-hidden");
+        zoneGame.classList.remove("is-hidden");
+        afficherVie(3);
+        afficherQuestion(currentIndex);
+        }
+    )
+    .catch(error => console.log(error));
+
 }
 
 
@@ -322,15 +297,11 @@ function nextQuestion()
     let currentQuestion = parseInt(txtCounter.innerText)+1;
     txtCounter.innerText=`${currentQuestion}/${questions.length}` ;
 }
+selTheme.selectedIndex=0;
+selThemereplay.selectedIndex=0;
+selTheme.addEventListener("change", (e)=> choixQuestion=`${e.target.value}.json`)
+selThemereplay.addEventListener("change", (e)=> choixQuestion=`${e.target.value}.json`)
 
 btnStart.addEventListener("click",start);
 btnReplay.addEventListener("click",start);
-//Ne permet pas de refaire appel à la fonction lambda au besoin pour simuler le click suivant
-// btnNext.addEventListener("click",()=>{
-//     afficherQuestion(currentIndex);
-//     btnNext.classList.add('is-hidden');
-//     let currentQuestion = parseInt(txtCounter.innerText)+1;
-//     txtCounter.innerText=`${currentQuestion}/${questions.length}` ;
-// });
-
 btnNext.addEventListener("click",nextQuestion);

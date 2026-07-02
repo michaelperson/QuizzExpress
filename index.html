@@ -20,7 +20,7 @@
       ============================================================ -->
     <section class="screen screen--accueil" id="screen-accueil">
       <h1 class="title">Quiz&nbsp;Express <i class="fa-solid fa-bolt title__bolt"></i></h1>
-      <p class="subtitle">8 questions. Un chrono qui tourne. Pas le droit à l'hésitation.</p>
+      <p class="subtitle">Des questions. Un chrono qui tourne. Pas le droit à l'hésitation.</p>
 
       <ul class="rules">
         <li><i class="fa-solid fa-bullseye"></i> 4 réponses par question — clic <em>ou</em> clavier (A / B / C / D)</li>
@@ -28,7 +28,12 @@
         <li><i class="fa-solid fa-fire"></i> Enchaîne les bonnes réponses pour faire grimper ta série</li>
         <li><i class="fa-solid fa-heart"></i> 3 vies — une erreur ou un temps écoulé en coûte une</li>
       </ul>
-
+      <h2>Thème</h2>
+      <select id="theme" class="theme">
+        <option value="js">Js</option>
+        <option value="html">Html</option>
+        <option value="css">css</option>
+      </select>
       <button type="button" class="btn btn--primary" id="start-btn">
         <i class="fa-solid fa-play"></i> Démarrer
       </button>
@@ -101,7 +106,12 @@
       <ul class="recap" id="recap">
         
       </ul>
-
+      <h2>Thème</h2>
+      <select id="theme_replay"  class="theme">
+        <option value="js">Js</option>
+        <option value="html">Html</option>
+        <option value="css">css</option>
+      </select>
       <button type="button" class="btn btn--primary" id="replay-btn">
         <i class="fa-solid fa-rotate-right"></i> Rejouer
       </button>
