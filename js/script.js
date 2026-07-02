@@ -1,6 +1,7 @@
 /*Variables*/
 let currentIndex =0;
 let vie = 3;
+let maxQuestion=0;
 let tabBtn=[];
 let tabReponse=[];
 let idChrono;
@@ -153,7 +154,7 @@ const repondre = function(cle)
     tabReponse.push(inforeponse);
     removeBtnKeyListener();
 
-    if(currentIndex==questions.length || vie==0)
+    if(currentIndex==questions.length-1 || vie==0)
     {
         winOrLoose();
     }
@@ -248,11 +249,12 @@ const start = function(e)
     .then(data => 
     {
         questions =data;
+        maxQuestion= questions.length;
+        txtCounter.innerText=`0/${maxQuestion}`;
         if(e.currentTarget=== btnReplay)
         {
             zonrFin.classList.add('is-hidden');
-            vie=3;
-            txtCounter.innerText='1/8';
+            vie=3;           
         }
         tabReponse=[];
         txtScoreFinal.innerText=0;
@@ -261,6 +263,7 @@ const start = function(e)
         currentIndex=0;
         zonrAcceuil.classList.add("is-hidden");
         zoneGame.classList.remove("is-hidden");
+        zoneRecap.classList.remove("is-hidden");
         afficherVie(3);
         afficherQuestion(currentIndex);
         }
