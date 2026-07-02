@@ -138,7 +138,7 @@ const repondre = function(cle)
         selectedBtn.classList.add("answer-btn--correct");
         //augmenter le score
         txtScore.innerText= parseInt(txtScore.innerText)+1;
-        txtScoreFinal.innerText = parseInt(txtScore.innerText)+1;
+        txtScoreFinal.innerText = parseInt(txtScore.innerText)+1+parseInt(txtSerie.innerText);
         txtSerie.innerText = parseInt(txtSerie.innerText)+1;
         inforeponse.isCorrect=1;
     }
