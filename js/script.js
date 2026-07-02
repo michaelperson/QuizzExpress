@@ -294,6 +294,7 @@ function addBtnKeyListener()
 }
 function nextQuestion()
 {
+    if(vie==0 || parseInt(txtCounter.innerText)+1 > maxQuestion) {winOrLoose();return;}
     clearTimeout(idTimeNext);
     afficherQuestion(currentIndex);
     btnNext.classList.add('is-hidden');
